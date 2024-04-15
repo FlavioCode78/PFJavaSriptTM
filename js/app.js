@@ -18,8 +18,8 @@ let cargarCabecero = () => {
   let porcentajeEgreso = totalEgresos() / totalIngresos();
   document.getElementById("presupuesto").innerHTML = formatoMoneda(presupuesto);
   document.getElementById("porcentaje").innerHTML = formatoPorcentaje(porcentajeEgreso);
-  document.getElementById("ingreso").innerHTML = formatoMoneda(totalIngresos());
-  document.getElementById("egreso").innerHTML = formatoMoneda(totalEgresos());
+  document.getElementById("ingresos").innerHTML = formatoMoneda(totalIngresos());
+  document.getElementById("egresos").innerHTML = formatoMoneda(totalEgresos());
 }
 
 
@@ -28,7 +28,7 @@ let cargarCabecero = () => {
 let totalIngresos = () => {
   let totalIngreso = 0;
   for (const ingreso of ingresos) {
-    totalIngreso += ingreso;
+    totalIngreso += ingreso.valor;
   }
   return totalIngreso;
 }
@@ -37,7 +37,7 @@ let totalIngresos = () => {
 let totalEgresos = () => {
   let totalEgreso = 0;
   for(let egreso of egresos) { 
-    totalEgreso += egreso;
+    totalEgreso += egreso.valor;
   }
   return totalEgreso;
 }
@@ -80,8 +80,8 @@ const crearIngresoHTML = (ingreso) =>{
 }
 
 const eliminarIngreso = (id) => {
-  let ingresoEliminar = ingresos.findIndex(ingresos => ingresos.id === id);
-  ingresos.splice(ingresoEliminar, 1);
+  let ingresoEliminar = ingreso.findIndex(ingreso => ingreso.id === id);
+  ingreso.splice(ingresoEliminar, 1);
   cargarCabecero();
   cargarIngresos();
 }
@@ -113,8 +113,8 @@ const crearEgresoHTML = (egreso) =>{
 }
 
 const eliminarEgreso = (id) => {
-  let egresoEliminar = egresos.findIndex(egresos => egresos.id === id);
-  egresos.splice(egresoEliminar, 1);
+  let egresoEliminar = egreso.findIndex(egreso => egreso.id === id);
+  egreso.splice(egresoEliminar, 1);
   cargarCabecero();
   cargarEgresos();
 }
@@ -131,11 +131,11 @@ const agregarDato = () => {
   let valor = forma["valor"];
   if(descripcion.value !== "" &&  valor.value !== ""){
       if(tipo.value === 'ingreso'){
-          ingresos.push(new Ingresos(descripcion.value, valor.value)) // Forma corta
+          ingresos.push(new Ingreso(descripcion.value, valor.value)) // Forma corta
           cargarCabecero();
           cargarIngresos();
       }else if(tipo.value === 'egreso'){
-          let nuevoEgresos = new Egresos(descripcion.value, valor.value) // Forma larga
+          let nuevoEgresos = new Egreso(descripcion.value, valor.value) // Forma larga
           egresos.push(nuevoEgresos);
           cargarCabecero();
           cargarEgresos();

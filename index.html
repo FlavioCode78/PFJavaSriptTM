@@ -32,7 +32,7 @@
 
     <!--Comienza Formulario onsubmit="return false"-->  
     <!--Falta agregar el onsubmit="return false" y la funcion en Onclick-->  
-    <form id="forma">
+    <form id="forma" onsubmit="return false">
             <div class="agregar">
                 <div class="agregar_contenedor">
                     <select class="agregar_tipo" id="tipo">
@@ -41,7 +41,7 @@
                     </select>
                     <input type="text" id="descripcion" class="agregar_descripcion" placeholder="Agregar Descripción" >
                     <input type="number" id="valor" class="agregar_valor" placeholder="Valor" step="any">
-                    <button type="button" class="agregar_btn"> <ion-icon name="checkmark-circle-outline"></ion-icon> </button>
+                    <button type="button" class="agregar_btn" onclick="agregarDato()"> <ion-icon name="checkmark-circle-outline"></ion-icon> </button>
                     
                   </div>
             </div>
@@ -59,7 +59,7 @@
                     <div class="derecha limpiarEstilos">
                         <div class="elemento_valor">+2,2000.00</div>
                         <div class="elemento_eliminar">
-                            <button class="elemento_eliminar--btn">
+                            <button class="elemento_eliminar--btn" onclick="`eliminarIngreso(${ingreso.id})`">
                                 <ion-icon name="close-circle-outline"></ion-icon>
                             </button>
                         </div>
@@ -72,7 +72,7 @@
                     <div class="derecha limpiarEstilos">
                         <div class="elemento_valor"> +1,500.00 </div>
                         <div class="elemento_eliminar">
-                            <button class="elemento_eliminar--btn">
+                            <button class="elemento_eliminar--btn" onclick="`eliminarIngreso(${ingreso.id})`">
                                 <ion-icon name="close-circle-outline"></ion-icon>
                             </button>
                         </div> 
@@ -89,7 +89,9 @@
                         <div class="elemento_valor">-900.00</div>
                         <div class="elemento_porcentaje">21%</div>
                         <div class="elemento_eliminar">
-                            <button class="elemento_eliminar--btn"><ion-icon name="close-circle-outline"></ion-icon></button>
+                            <button class="elemento_eliminar--btn" onclick="`eliminarEgreso(${egreso.id})`">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -100,7 +102,9 @@
                         <div class="elemento_valor">-400.00</div>
                         <div class="elemento_porcentaje">9%</div>
                         <div class="elemento_eliminar">
-                            <button class="elemento_eliminar--btn"><ion-icon name="close-circle-outline"></ion-icon></button>
+                            <button class="elemento_eliminar--btn" onclick="`eliminarEgreso(${egreso.id})`">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </button>
                         </div>
                     </div>
                 </div>
