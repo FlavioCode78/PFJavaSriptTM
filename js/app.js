@@ -27,7 +27,7 @@ let cargarCabecero = () => {
 
 let totalIngresos = () => {
   let totalIngreso = 0;
-  for (const ingreso of ingresos) {
+  for (let ingreso of ingresos) {
     totalIngreso += ingreso.valor;
   }
   return totalIngreso;
@@ -71,7 +71,7 @@ const crearIngresoHTML = (ingreso) =>{
               <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
               <div class="elemento_eliminar">
                   <button type="button" class="elemento_eliminar--btn">
-                      <ion-icon name="close-circle-outline" onclick=eliminarIngresos(${ingreso.id})"></ion-icon>
+                      <ion-icon name="close-circle-outline" onclick="eliminarIngreso(${ingreso.id})"></ion-icon>
                   </button>
               </div>
           </div>
@@ -80,8 +80,8 @@ const crearIngresoHTML = (ingreso) =>{
 }
 
 const eliminarIngreso = (id) => {
-  let ingresoEliminar = ingreso.findIndex(ingreso => ingreso.id === id);
-  ingreso.splice(ingresoEliminar, 1);
+  let ingresoEliminar = ingresos.findIndex(ingresos => ingresos.id === id);
+  ingresos.splice(ingresoEliminar, 1);
   cargarCabecero();
   cargarIngresos();
 }
@@ -104,7 +104,7 @@ const crearEgresoHTML = (egreso) =>{
               <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
               <div class="elemento_eliminar">
                   <button type="button" class="elemento_eliminar--btn">
-                      <ion-icon name="close-circle-outline" onclick=eliminarIngresos(${egreso.id})"></ion-icon>
+                      <ion-icon name="close-circle-outline" onclick="eliminarEgreso(${egreso.id})"></ion-icon>
                   </button>
               </div>
           </div>
@@ -113,8 +113,8 @@ const crearEgresoHTML = (egreso) =>{
 }
 
 const eliminarEgreso = (id) => {
-  let egresoEliminar = egreso.findIndex(egreso => egreso.id === id);
-  egreso.splice(egresoEliminar, 1);
+  let egresoEliminar = egresos.findIndex(egresos => egresos.id === id);
+  egresos.splice(egresoEliminar, 1);
   cargarCabecero();
   cargarEgresos();
 }
